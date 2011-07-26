@@ -1,0 +1,286 @@
+﻿<phone:PhoneApplicationPage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:local="clr-namespace:Beetle.ViewModels"
+                            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                            xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+                            mc:Ignorable="d"
+                            d:DesignWidth="480"
+                            d:DesignHeight="800"
+                            x:Class="Beetle.MainPage"
+                            SupportedOrientations="Portrait"
+                            Orientation="Portrait"
+                            d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal" />
+    </phone:PhoneApplicationPage.FontFamily>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal" />
+    </phone:PhoneApplicationPage.FontSize>
+    <phone:PhoneApplicationPage.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush" />
+    </phone:PhoneApplicationPage.Foreground>
+    <phone:PhoneApplicationPage.DataContext>
+        <Binding Path="MainViewModel"
+                 Source="{StaticResource Locator}" />
+    </phone:PhoneApplicationPage.DataContext>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Canvas x:Name="TheBug"
+                DataContext="{Binding GameState}"
+                Grid.Row="0">
+            <Ellipse x:Name="Body"
+                     Visibility="{Binding Body, Converter={StaticResource BoolToVisibilityConverter}}"
+                     Fill="{StaticResource PhoneAccentBrush}"
+                     Height="283"
+                     Canvas.Left="159"
+                     Stroke="Black"
+                     Canvas.Top="169"
+                     Width="152" />
+            <Path x:Name="Leg1"
+                  Visibility="{Binding Leg1, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M183.90944,459.6868 L103.58912,484.67526 L121.43793,518.58954 L98.234062,534.65356"
+                  Height="75.966"
+                  Canvas.Left="97.734"
+                  Stretch="Fill"
+                  Canvas.Top="407.187"
+                  UseLayoutRounding="False"
+                  Width="86.675"
+                  StrokeThickness="3">
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+            <Path x:Name="Leg2"
+                  Visibility="{Binding Leg2, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M183.90944,459.6868 L103.58912,484.67526 L121.43793,518.58954 L98.234062,534.65356"
+                  Height="75.966"
+                  Canvas.Left="286.934"
+                  Stretch="Fill"
+                  Canvas.Top="407.187"
+                  UseLayoutRounding="False"
+                  Width="86.675"
+                  StrokeThickness="3"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <CompositeTransform ScaleX="-1" />
+                </Path.RenderTransform>
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+            <Path x:Name="Leg3"
+                  Visibility="{Binding Leg3, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M183.90944,459.6868 L103.58912,484.67526 L121.43793,518.58954 L98.234062,534.65356"
+                  Height="75.966"
+                  Canvas.Left="79.884"
+                  Stretch="Fill"
+                  Canvas.Top="360.777"
+                  UseLayoutRounding="False"
+                  Width="86.675"
+                  StrokeThickness="3">
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+            <Path x:Name="Leg4"
+                  Visibility="{Binding Leg4, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M183.90944,459.6868 L103.58912,484.67526 L121.43793,518.58954 L98.234062,534.65356"
+                  Height="75.966"
+                  Canvas.Left="303.009"
+                  Stretch="Fill"
+                  Canvas.Top="360.777"
+                  UseLayoutRounding="False"
+                  Width="86.675"
+                  StrokeThickness="3"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <CompositeTransform ScaleX="-1" />
+                </Path.RenderTransform>
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+            <Path x:Name="Leg5"
+                  Visibility="{Binding Leg5, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M183.90944,459.6868 L103.58912,484.67526 L121.43793,518.58954 L98.234062,534.65356"
+                  Height="75.966"
+                  Canvas.Left="70.725"
+                  Stretch="Fill"
+                  Canvas.Top="201"
+                  UseLayoutRounding="False"
+                  Width="86.675"
+                  StrokeThickness="3"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <CompositeTransform Rotation="47.471" />
+                </Path.RenderTransform>
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+            <Path x:Name="Leg6"
+                  Visibility="{Binding Leg6, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M183.90944,459.6868 L103.58912,484.67526 L121.43793,518.58954 L98.234062,534.65356"
+                  Height="75.966"
+                  Canvas.Left="311.525"
+                  Stretch="Fill"
+                  Canvas.Top="201"
+                  UseLayoutRounding="False"
+                  Width="86.675"
+                  StrokeThickness="3"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <CompositeTransform Rotation="-47.471"
+                                        ScaleX="-1" />
+                </Path.RenderTransform>
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+            <Ellipse x:Name="Wing1"
+                     Visibility="{Binding Wing1, Converter={StaticResource BoolToVisibilityConverter}}"
+                     Height="84"
+                     Canvas.Left="24"
+                     StrokeThickness="3"
+                     Canvas.Top="263"
+                     Width="157">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="Wing2"
+                     Visibility="{Binding Wing2, Converter={StaticResource BoolToVisibilityConverter}}"
+                     Height="84"
+                     Canvas.Left="288"
+                     StrokeThickness="3"
+                     Canvas.Top="263"
+                     Width="167">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="Head"
+                     Visibility="{Binding Head, Converter={StaticResource BoolToVisibilityConverter}}"
+                     Height="96"
+                     Canvas.Left="159"
+                     StrokeThickness="3"
+                     Canvas.Top="115"
+                     Width="152"
+                     Fill="{StaticResource PhoneAccentBrush}" />
+            <Canvas x:Name="Eye1"
+                    Visibility="{Binding Eye1, Converter={StaticResource BoolToVisibilityConverter}}"
+                    Height="100"
+                    Width="100"
+                    Canvas.Left="143"
+                    Canvas.Top="96">
+                <Ellipse Fill="#FFF4F4F5"
+                         Height="84"
+                         StrokeThickness="3"
+                         Canvas.Top="8"
+                         Width="92" />
+                <Ellipse Fill="{StaticResource PhoneAccentBrush}"
+                         Height="29"
+                         Canvas.Left="41"
+                         StrokeThickness="3"
+                         Canvas.Top="49"
+                         Width="34" />
+            </Canvas>
+            <Canvas x:Name="Eye2"
+                    Visibility="{Binding Eye2, Converter={StaticResource BoolToVisibilityConverter}}"
+                    Height="100"
+                    Width="100"
+                    Canvas.Left="233"
+                    Canvas.Top="96"
+                    RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <CompositeTransform ScaleX="-1" />
+                </Canvas.RenderTransform>
+                <Ellipse Fill="#FFF4F4F5"
+                         Height="84"
+                         StrokeThickness="3"
+                         Canvas.Top="8"
+                         Width="92" />
+                <Ellipse Fill="{StaticResource PhoneAccentBrush}"
+                         Height="29"
+                         Canvas.Left="41"
+                         StrokeThickness="3"
+                         Canvas.Top="49"
+                         Width="34" />
+            </Canvas>
+            <Path x:Name="Antenna1"
+                  Visibility="{Binding Antenna1, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M239.2,166 C282.39999,78.800003 345.60001,59.599998 345.60001,59.599998"
+                  Height="106.4"
+                  Canvas.Left="130.4"
+                  Stretch="Fill"
+                  StrokeThickness="3"
+                  Canvas.Top="11.6"
+                  UseLayoutRounding="False"
+                  Width="106.4"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <CompositeTransform ScaleX="-1" />
+                </Path.RenderTransform>
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+            <Path x:Name="Antenna2"
+                  Visibility="{Binding Antenna2, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Data="M239.2,166 C282.39999,78.800003 345.60001,59.599998 345.60001,59.599998"
+                  Height="106.4"
+                  Canvas.Left="239.2"
+                  Stretch="Fill"
+                  StrokeThickness="3"
+                  Canvas.Top="11.6"
+                  UseLayoutRounding="False"
+                  Width="106.4">
+                <Path.Stroke>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
+                </Path.Stroke>
+            </Path>
+        </Canvas>
+
+        <Grid Grid.Row="1">
+            <StackPanel x:Name="ActionArea"
+                        Orientation="Vertical"
+                        d:LayoutOverrides="Height">
+                <Button x:Name="RollButton"
+                        Content="Roll the dice"
+                        Height="72">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding RollTheDiceCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <StackPanel x:Name="DisplayArea"
+                            Orientation="Horizontal">
+                    <TextBlock x:Name="YouRolledA"
+                               TextWrapping="Wrap"
+                               Text="You Rolled a " />
+                    <TextBlock x:Name="CurrentRoll"
+                               TextWrapping="Wrap"
+                               Text="{Binding CurrentRoll}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</phone:PhoneApplicationPage>

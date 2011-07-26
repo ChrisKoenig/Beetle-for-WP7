@@ -1,0 +1,19 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beetle", "Beetle\Beetle.csproj", "{0be2b044-88a1-4499-85f5-b577eecd4d18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BE2B044-88A1-4499-85F5-B577EECD4D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE2B044-88A1-4499-85F5-B577EECD4D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE2B044-88A1-4499-85F5-B577EECD4D18}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0BE2B044-88A1-4499-85F5-B577EECD4D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE2B044-88A1-4499-85F5-B577EECD4D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE2B044-88A1-4499-85F5-B577EECD4D18}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

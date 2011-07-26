@@ -1,0 +1,11 @@
+<Beetle_ViewModels:MainViewModel xmlns:Beetle_ViewModels="clr-namespace:Beetle.ViewModels" xmlns:Beetle_Models="clr-namespace:Beetle.Models" xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.WP71" IsInDesignMode="True" IsInDesignModeStatic="False">
+	<Beetle_ViewModels:MainViewModel.GameState>
+		<Beetle_Models:GameState Antenna2="False" Antenna1="True" Body="True" Eye2="True" Eye1="False" Head="False" Leg4="False" Leg6="False" Leg5="True" Leg3="True" Leg1="True" Leg2="False" Wing2="False" Wing1="True"/>
+	</Beetle_ViewModels:MainViewModel.GameState>
+	<Beetle_ViewModels:MainViewModel.ResetGameCommand>
+		<GalaSoft_MvvmLight_Command:RelayCommand/>
+	</Beetle_ViewModels:MainViewModel.ResetGameCommand>
+	<Beetle_ViewModels:MainViewModel.RollTheDiceCommand>
+		<GalaSoft_MvvmLight_Command:RelayCommand/>
+	</Beetle_ViewModels:MainViewModel.RollTheDiceCommand>
+</Beetle_ViewModels:MainViewModel>
