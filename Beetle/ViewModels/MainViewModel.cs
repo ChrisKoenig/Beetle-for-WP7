@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media.Animation;
 using Beetle.Messages;
 using Beetle.Models;
 using GalaSoft.MvvmLight;
@@ -13,14 +14,6 @@ namespace Beetle.ViewModels
             ResetGame();
             RollTheDiceCommand = new RelayCommand(() => this.RollTheDice());
             ResetGameCommand = new RelayCommand(() => this.ResetGame());
-            if (IsInDesignMode)
-            {
-                // Code runs in Blend --> create design time data.
-            }
-            else
-            {
-                // Code runs "for real": Connect to service, etc...
-            }
         }
 
         private void ResetGame()
@@ -30,18 +23,22 @@ namespace Beetle.ViewModels
 
         private void RollTheDice()
         {
-            // get the random die roll
-            int dieRoll = GetRandomDieRoll();
+            // get the random dice roll
+            CurrentRoll = GetRandomDieRoll();
 
             // add the part based on the die roll
-            GameState.AddPart(dieRoll);
+            this.GameState.AddPart(CurrentRoll.Value);
 
             // just to make sure...
             RaisePropertyChanged(() => this.GameState);
 
             // check to see if the game is over
-            if (GameState.IsComplete())
-                MessengerInstance.Send<GameOverMessage>(new GameOverMessage());
+            CheckForGameOver();
+        }
+
+        private void CheckForGameOver()
+        {
+            this.GameOver = GameState.IsComplete();
         }
 
         private int GetRandomDieRoll()
@@ -103,5 +100,29 @@ namespace Beetle.ViewModels
         }
 
         #endregion GameState property
+
+        #region GameOver property
+
+        private bool _gameOver = false;
+
+        public bool GameOver
+        {
+            get
+            {
+                return _gameOver;
+            }
+
+            set
+            {
+                if (_gameOver == value)
+                {
+                    return;
+                }
+                _gameOver = value;
+                RaisePropertyChanged(() => this.GameOver);
+            }
+        }
+
+        #endregion GameOver property
     }
 }

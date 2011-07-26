@@ -4,46 +4,38 @@
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                            xmlns:local="clr-namespace:Beetle.ViewModels"
+                            xmlns:converters="clr-namespace:Beetle.Converters"
                             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                             xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
-                            mc:Ignorable="d"
-                            d:DesignWidth="480"
-                            d:DesignHeight="800"
+                            xmlns:controls="clr-namespace:Beetle.Controls"
+                            xmlns:local="clr-namespace:Beetle"
                             x:Class="Beetle.MainPage"
                             SupportedOrientations="Portrait"
                             Orientation="Portrait"
+                            DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
+                            mc:Ignorable="d"
+                            d:DesignWidth="480"
+                            d:DesignHeight="800"
                             d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
 
     <phone:PhoneApplicationPage.Resources>
-        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </phone:PhoneApplicationPage.Resources>
-
-    <phone:PhoneApplicationPage.FontFamily>
-        <StaticResource ResourceKey="PhoneFontFamilyNormal" />
-    </phone:PhoneApplicationPage.FontFamily>
-    <phone:PhoneApplicationPage.FontSize>
-        <StaticResource ResourceKey="PhoneFontSizeNormal" />
-    </phone:PhoneApplicationPage.FontSize>
-    <phone:PhoneApplicationPage.Foreground>
-        <StaticResource ResourceKey="PhoneForegroundBrush" />
-    </phone:PhoneApplicationPage.Foreground>
-    <phone:PhoneApplicationPage.DataContext>
-        <Binding Path="MainViewModel"
-                 Source="{StaticResource Locator}" />
-    </phone:PhoneApplicationPage.DataContext>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot"
           Background="Transparent">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Canvas x:Name="TheBug"
                 DataContext="{Binding GameState}"
-                Grid.Row="0">
+                Grid.Row="0"
+                Margin="0,16,0,0">
             <Ellipse x:Name="Body"
                      Visibility="{Binding Body, Converter={StaticResource BoolToVisibilityConverter}}"
                      Fill="{StaticResource PhoneAccentBrush}"
@@ -257,30 +249,35 @@
             </Path>
         </Canvas>
 
-        <Grid Grid.Row="1">
-            <StackPanel x:Name="ActionArea"
-                        Orientation="Vertical"
-                        d:LayoutOverrides="Height">
-                <Button x:Name="RollButton"
-                        Content="Roll the dice"
-                        Height="72">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding RollTheDiceCommand}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                <StackPanel x:Name="DisplayArea"
-                            Orientation="Horizontal">
-                    <TextBlock x:Name="YouRolledA"
-                               TextWrapping="Wrap"
-                               Text="You Rolled a " />
-                    <TextBlock x:Name="CurrentRoll"
-                               TextWrapping="Wrap"
-                               Text="{Binding CurrentRoll}" />
-                </StackPanel>
+        <controls:DiceControl x:Name="StripOfDice"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom"
+                              CurrentValue="{Binding CurrentRoll}"
+                              Grid.Row="1" />
+
+        <StackPanel x:Name="ActionArea"
+                    Orientation="Vertical"
+                    VerticalAlignment="Top"
+                    Grid.Row="2">
+            <Button x:Name="RollButton"
+                    Content="Roll the dice"
+                    Height="72">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding RollTheDiceCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <StackPanel x:Name="DisplayArea"
+                        Orientation="Horizontal">
+                <TextBlock x:Name="YouRolledA"
+                           TextWrapping="Wrap"
+                           Text="You Rolled a " />
+                <TextBlock x:Name="CurrentRoll"
+                           TextWrapping="Wrap"
+                           Text="{Binding CurrentRoll}" />
             </StackPanel>
-        </Grid>
+        </StackPanel>
 
     </Grid>
 </phone:PhoneApplicationPage>
