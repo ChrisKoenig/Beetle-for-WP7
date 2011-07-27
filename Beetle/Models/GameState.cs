@@ -9,8 +9,9 @@ namespace Beetle.Models
     {
         public void ResetGameState()
         {
-            Body = Head = Leg1 = Leg2 = Leg3 = Leg4 = Leg5 = Leg6
-                = Antenna1 = Antenna2 = Wing1 = Wing2 = false;
+            Body = Leg1 = Leg2 = Leg3 = Leg4 = Leg5 = Leg6 =
+                Head = Eye1 = Eye2 = Antenna1 = Antenna2 =
+                Wing1 = Wing2 = false;
         }
 
         public void AddPart(int dieRoll)

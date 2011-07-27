@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Threading;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -28,26 +22,29 @@ namespace Beetle
         /// </summary>
         public App()
         {
-            // Global handler for uncaught exceptions. 
+            // Global handler for uncaught exceptions.
             // Note that exceptions thrown by ApplicationBarItem.Click will not get caught here.
             UnhandledException += Application_UnhandledException;
 
             // Show graphics profiling information while debugging.
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                // Display the current frame rate counters.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+            //if (System.Diagnostics.Debugger.IsAttached)
+            //{
+            // Display the current frame rate counters.
+            //Application.Current.Host.Settings.EnableFrameRateCounter = true;
 
-                // Show the areas of the app that are being redrawn in each frame.
-                //Application.Current.Host.Settings.EnableRedrawRegions = true;
+            // Show the areas of the app that are being redrawn in each frame.
+            //Application.Current.Host.Settings.EnableRedrawRegions = true;
 
-                // Enable non-production analysis visualization mode, 
-                // which shows areas of a page that are being GPU accelerated with a colored overlay.
-                //Application.Current.Host.Settings.EnableCacheVisualization = true;
-            }
+            // Enable non-production analysis visualization mode,
+            // which shows areas of a page that are being GPU accelerated with a colored overlay.
+            //Application.Current.Host.Settings.EnableCacheVisualization = true;
+            //}
 
             // Standard Silverlight initialization
             InitializeComponent();
+
+            // Enable DispatcherHelper
+            DispatcherHelper.Initialize();
 
             // Phone-specific initialization
             InitializePhoneApplication();
@@ -131,6 +128,6 @@ namespace Beetle
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
         }
 
-        #endregion
+        #endregion Phone application initialization
     }
 }

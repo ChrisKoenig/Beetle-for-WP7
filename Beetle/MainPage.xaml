@@ -9,18 +9,23 @@
                             xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
                             xmlns:controls="clr-namespace:Beetle.Controls"
                             xmlns:local="clr-namespace:Beetle"
+                            xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+                            xmlns:eim="clr-namespace:Microsoft.Expression.Interactivity.Media;assembly=Microsoft.Expression.Interactions"
                             x:Class="Beetle.MainPage"
                             SupportedOrientations="Portrait"
                             Orientation="Portrait"
-                            DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
                             mc:Ignorable="d"
                             d:DesignWidth="480"
-                            d:DesignHeight="800"
-                            d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+                            d:DesignHeight="800" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
 
     <phone:PhoneApplicationPage.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.DataContext>
+        <Binding Path="MainViewModel"
+                 Source="{StaticResource Locator}" />
+    </phone:PhoneApplicationPage.DataContext>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot"
@@ -279,5 +284,16 @@
             </StackPanel>
         </StackPanel>
 
+        <Grid x:Name="GameOverMessage"
+              Grid.RowSpan="3"
+              Background="Green" Visibility="{Binding GameOver, Converter={StaticResource BoolToVisibilityConverter}}">
+            <TextBlock Text="YOU WON!"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       FontWeight="ExtraBold"
+                       TextWrapping="Wrap"
+                       FontSize="144" />
+        </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

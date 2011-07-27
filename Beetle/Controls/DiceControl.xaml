@@ -8,9 +8,11 @@
              x:Class="Beetle.Controls.DiceControl"
              d:DesignWidth="420"
              d:DesignHeight="120">
+
     <UserControl.Resources>
         <converters:WhichDieToShowConverter x:Key="WhichDieToShowConverter" />
     </UserControl.Resources>
+
     <StackPanel x:Name="Dice"
                 Orientation="Horizontal"
                 HorizontalAlignment="Center">
@@ -27,4 +29,5 @@
         <controls:Die Value="6"
                       Visibility="{Binding CurrentRoll, Converter={StaticResource WhichDieToShowConverter}, ConverterParameter=6}" />
     </StackPanel>
+
 </UserControl>

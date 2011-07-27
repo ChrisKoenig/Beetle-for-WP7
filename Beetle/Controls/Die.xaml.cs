@@ -1,7 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using Beetle.Messages;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Beetle.Controls
 {
@@ -16,9 +17,13 @@ namespace Beetle.Controls
             InitializeComponent();
             Loaded += (s, e) =>
             {
-                //this.DataContext = new { Size = this.Size, Value = this.Value };
                 DrawPips();
             };
+        }
+
+        private void gl_DoubleTap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
+        {
+            Messenger.Default.Send<RollTheDiceMessage>(new RollTheDiceMessage());
         }
 
         private void DrawPips()

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Beetle.Messages;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Beetle.Controls
 {
