@@ -4,7 +4,6 @@ using Beetle.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
-using ShakeGestures;
 
 namespace Beetle.ViewModels
 {
@@ -17,14 +16,6 @@ namespace Beetle.ViewModels
             RollTheDiceCommand = new RelayCommand(() => this.RollTheDice());
             ResetGameCommand = new RelayCommand(() => this.ResetGame());
             MessengerInstance.Register<RollTheDiceMessage>(this, (message) => this.RollTheDice());
-
-            ShakeGesturesHelper.Instance.ShakeGesture += Instance_ShakeGesture;
-            ShakeGesturesHelper.Instance.Active = true;
-        }
-
-        private void Instance_ShakeGesture(object sender, ShakeGestureEventArgs e)
-        {
-            DispatcherHelper.CheckBeginInvokeOnUI(() => RollTheDice());
         }
 
         private void ResetGame()

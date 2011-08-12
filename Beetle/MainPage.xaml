@@ -16,7 +16,8 @@
                             Orientation="Portrait"
                             mc:Ignorable="d"
                             d:DesignWidth="480"
-                            d:DesignHeight="800" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+                            d:DesignHeight="800"
+                            d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
 
     <phone:PhoneApplicationPage.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
@@ -273,7 +274,7 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
-            <StackPanel x:Name="DisplayArea"
+            <!--<StackPanel x:Name="DisplayArea"
                         Orientation="Horizontal">
                 <TextBlock x:Name="YouRolledA"
                            TextWrapping="Wrap"
@@ -281,12 +282,13 @@
                 <TextBlock x:Name="CurrentRoll"
                            TextWrapping="Wrap"
                            Text="{Binding CurrentRoll}" />
-            </StackPanel>
+            </StackPanel>-->
         </StackPanel>
 
         <Grid x:Name="GameOverMessage"
               Grid.RowSpan="3"
-              Background="Green" Visibility="{Binding GameOver, Converter={StaticResource BoolToVisibilityConverter}}">
+              Background="Green"
+              Visibility="{Binding GameOver, Converter={StaticResource BoolToVisibilityConverter}}">
             <TextBlock Text="YOU WON!"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
